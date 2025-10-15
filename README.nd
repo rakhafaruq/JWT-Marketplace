@@ -1,0 +1,13 @@
+# JWT Marketplace API (Flask)
+
+## 🚀 Cara Menjalankan
+```bash
+# 1. Buat environment
+python -m venv .venv
+.venv\Scripts\activate   # atau source .venv/bin/activate (Linux/macOS)
+
+# 2. Install dependency
+pip install -r requirements.txt
+
+# 3. Jalankan server
+python app.py
