@@ -1,4 +1,4 @@
-# JWT Marketplace API (Flask)
+# JWT Marketplace API (Flask) - KELOMPOK 8 SI4706
 
 ## ⚙️ 1️⃣ Cara Setup Environment & Menjalankan Server
 
@@ -99,3 +99,6 @@ JWT token berlaku 15 menit (diatur di config.py).
 .env tidak disertakan di repository, gunakan .env.example sebagai panduan.
 .gitignore digunakan agar .env, .venv/, dan __pychache__ tidak masuk ke dalam Github
 
+## ⚙️ 6️⃣ Link GDRIVE repository
+
+📎 [Folder Pengerjaan di Google Drive](https://drive.google.com/drive/folders/1pKeo_fHHtyrySC4dDXkTRe7T9dT0zT_D?usp=sharing)
