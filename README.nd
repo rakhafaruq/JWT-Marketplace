@@ -1,13 +1,90 @@
 # JWT Marketplace API (Flask)
 
-## 🚀 Cara Menjalankan
-```bash
-# 1. Buat environment
-python -m venv .venv
-.venv\Scripts\activate   # atau source .venv/bin/activate (Linux/macOS)
+## ⚙️ 1️⃣ Cara Setup Environment & Menjalankan Server
 
-# 2. Install dependency
+### **Langkah 1 — Buat Virtual Environment**
+
+**Windows**
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+
+### **Langkah 2 — Install Library yang Diperlukan**
+
+pip install Flask Flask-CORS PyJWT python-dotenv Werkzeug
+
 pip install -r requirements.txt
 
-# 3. Jalankan server
+### **Langkah 4 — Jalankan Server**
+
 python app.py
+
+## ⚙️ 2️⃣ Variabel .env yang Diperlukan
+
+JWT_SECRET=my_super_secret_key_123
+PORT=5000
+
+## ⚙️ 3️⃣ Daftar Endpoint + Skema Request/Response (Ringkas)
+
+Daftar Endpoint
+
+POST:	/auth/login	    Login dan mendapatkan token JWT
+GET:	/items	        Mendapatkan daftar item (publik)
+PUT:	/profile	    Mengubah data profil pengguna
+
+Skema Request/Response
+
+1. POST /auth/login
+
+```json
+Body (JSON): { "email": "user1@example.com", "password": "pass123" }
+Respon 200: { "access_token": "<jwt>" }
+Respon 401: { "error": "Invalid credentials" }
+
+2. GET /items (publik, tanpa JWT)
+
+Respon 200:
+
+```json
+{
+  "items": [
+    {"id": 1, "name": "Kemeja Hitam", "price": 150000},
+    {"id": 2, "name": "Celana Jorts", "price": 220000},
+    {"id": 3, "name": "Sepatu Hitam", "price": 250000}
+  ]
+}
+
+3. PUT /profile (terproteksi, wajib JWT)
+
+```json
+Body (JSON): { "name": "Bude" }
+
+Dengan JWT (Respon 200):
+
+```json
+{ "message": "Profile updated", "profile": { "name": " Bude"} }
+
+Tanpa JWT (Respon 401):
+
+```json
+{
+    "error": "Missing or invalid Authorization header"
+}
+
+Token Expired (Respon 401):
+
+```json
+{
+    "error": "Token expired"
+}
+
+## ⚙️ 4️⃣ Postman Collection 
+
+Hasil Postman => JWT_Marketplace_API.postman_collection.json
+
+## ⚙️ 5️⃣ Catatan & Asumsi
+
+JWT token berlaku 15 menit (diatur di config.py).
+.env tidak disertakan di repository, gunakan .env.example sebagai panduan.
+.gitignore digunakan agar .env, .venv/, dan __pychache__ tidak masuk ke dalam Github
+
